@@ -143,6 +143,13 @@ def rate(a, b):
     return f"{a / b * 100:.1f}%" if b else "–"
 
 
+def rate_col(num, den):
+    """Tính cột tỷ lệ an toàn: mẫu số = 0 thì hiện '–' thay vì lỗi."""
+    den = den.astype("float64")
+    r = (num.astype("float64") / den.where(den != 0) * 100).round(1)
+    return r.map(lambda v: "–" if pd.isna(v) else f"{v}%")
+
+
 # ============================================================
 # 4) GIAO DIỆN
 # ============================================================
@@ -240,24 +247,24 @@ with right:
 st.subheader("全社 12ヶ月実績 / Bảng 12 tháng")
 if not by_month.empty:
     t = by_month.copy()
-    t["面接率"] = (t["面接数"] / t["応募数"] * 100).round(1).astype(str) + "%"
-    t["内定率"] = (t["内定数"] / t["面接数"].replace(0, pd.NA) * 100).round(1).astype(str) + "%"
-    t["入社率"] = (t["入社数"] / t["内定数"].replace(0, pd.NA) * 100).round(1).astype(str) + "%"
+    t["面接率"] = rate_col(t["面接数"], t["応募数"])
+    t["内定率"] = rate_col(t["内定数"], t["面接数"])
+    t["入社率"] = rate_col(t["入社数"], t["内定数"])
     if not df_target.empty:
         gt = df_target.groupby("月")["入社目標"].sum()
         t.insert(3, "入社目標", t.index.map(gt).fillna(0).astype(int))
-    st.dataframe(t.replace("nan%", "–"), width="stretch")
+    st.dataframe(t, width="stretch")
 
 # ----- bảng bộ phận-vị trí -----
 st.subheader("部門・職種別 / Theo bộ phận – vị trí")
 by_dp = d.groupby(["_dept", "_pos"]).apply(
     lambda g: pd.Series(funnel_counts(g)), include_groups=False)
 if not by_dp.empty:
-    by_dp["面接率"] = (by_dp["面接数"] / by_dp["応募数"] * 100).round(1).astype(str) + "%"
-    by_dp["内定率"] = (by_dp["内定数"] / by_dp["面接数"].replace(0, pd.NA) * 100).round(1).astype(str) + "%"
-    by_dp["入社率"] = (by_dp["入社数"] / by_dp["内定数"].replace(0, pd.NA) * 100).round(1).astype(str) + "%"
+    by_dp["面接率"] = rate_col(by_dp["面接数"], by_dp["応募数"])
+    by_dp["内定率"] = rate_col(by_dp["内定数"], by_dp["面接数"])
+    by_dp["入社率"] = rate_col(by_dp["入社数"], by_dp["内定数"])
     by_dp.index.names = ["部門", "職種"]
-    st.dataframe(by_dp.replace("nan%", "–"), width="stretch")
+    st.dataframe(by_dp, width="stretch")
 else:
     st.info("Không có dữ liệu phù hợp bộ lọc")
 
