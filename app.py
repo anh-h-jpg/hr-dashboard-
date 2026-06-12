@@ -20,7 +20,7 @@ SHEET_NAME_TARGET = "targets"    # tên tab mục tiêu: 月 | 部門 | 職種 |
 
 # Email được coi là ADMIN (thấy thêm khu vực thao tác bot)
 ADMIN_EMAILS = [
-    "admin@congtycuaban.com",
+    "anh-h@dymvietnam.net",
 ]
 
 # Tên cột trong Google Sheet (đúng theo header thật của bạn)
