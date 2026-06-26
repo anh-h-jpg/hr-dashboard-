@@ -67,97 +67,120 @@ RUST_BG = "#FBEFE6"
 SAGE = "#4F7A5C"       # accent phụ — đạt / vượt mục tiêu
 SAGE_BG = "#EAF2EC"
 
-CUSTOM_CSS = f"""<style>
+CUSTOM_CSS = f"""
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
-html {{
-color-scheme: light only;
-}}
+
 html, body, [class*="css"] {{
-font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
 }}
+
 .stApp {{
-background-color: {PAPER} !important;
+    background-color: {PAPER};
 }}
+
+/* ---- Tiêu đề trang ---- */
 h1 {{
-font-family: 'Zen Old Mincho', serif !important;
-font-weight: 700 !important;
-color: {INK} !important;
-letter-spacing: 0.01em;
-padding-bottom: 0 !important;
+    font-family: 'Zen Old Mincho', serif !important;
+    font-weight: 700 !important;
+    color: {INK} !important;
+    letter-spacing: 0.01em;
+    padding-bottom: 0 !important;
 }}
+
 h2, h3 {{
-font-family: 'Inter', sans-serif !important;
-font-weight: 600 !important;
-color: {INK} !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    color: {INK} !important;
 }}
+
+/* ---- Caption dưới tiêu đề ---- */
 .app-caption {{
-color: {INK_SOFT};
-font-size: 0.92rem;
-margin-top: -0.6rem;
-margin-bottom: 0.15rem;
-line-height: 1.6;
+    color: {INK_SOFT};
+    font-size: 0.92rem;
+    margin-top: -0.6rem;
+    margin-bottom: 0.15rem;
+    line-height: 1.6;
 }}
+
 .app-caption.status-ok {{ color: {SAGE}; font-weight: 500; }}
 .app-caption.status-warn {{ color: {RUST}; font-weight: 500; }}
+
 .app-divider {{
-border-top: 1px solid {LINE};
-margin: 1.6rem 0 1.4rem 0;
+    border-top: 1px solid {LINE};
+    margin: 1.6rem 0 1.4rem 0;
 }}
+
+/* ---- Thẻ KPI (metric) ---- */
 div[data-testid="stMetric"] {{
-background: {CARD} !important;
-border: 1px solid {LINE};
-border-radius: 10px;
-padding: 0.9rem 1rem 0.7rem 1rem;
-box-shadow: 0 1px 2px rgba(31, 36, 48, 0.04);
+    background: {CARD};
+    border: 1px solid {LINE};
+    border-radius: 10px;
+    padding: 0.9rem 1rem 0.7rem 1rem;
+    box-shadow: 0 1px 2px rgba(31, 36, 48, 0.04);
 }}
+
 div[data-testid="stMetricLabel"] {{
-color: {INK_SOFT} !important;
-font-size: 0.78rem !important;
-font-weight: 600 !important;
-text-transform: uppercase;
-letter-spacing: 0.04em;
+    color: {INK_SOFT} !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }}
+
 div[data-testid="stMetricValue"] {{
-font-family: 'JetBrains Mono', monospace !important;
-color: {NAVY_DEEP} !important;
-font-weight: 600 !important;
-font-size: 1.7rem !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    color: {NAVY_DEEP} !important;
+    font-weight: 600 !important;
+    font-size: 1.7rem !important;
 }}
+
 div[data-testid="stMetricDelta"] {{
-font-family: 'JetBrains Mono', monospace !important;
-font-size: 0.78rem !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.78rem !important;
 }}
+
+/* ---- Bảng dataframe ---- */
 div[data-testid="stDataFrame"] {{
-border: 1px solid {LINE};
-border-radius: 10px;
-overflow: hidden;
+    border: 1px solid {LINE};
+    border-radius: 10px;
+    overflow: hidden;
 }}
+
+/* ---- Sidebar ---- */
 section[data-testid="stSidebar"] {{
-background-color: {CARD} !important;
-border-right: 1px solid {LINE};
+    background-color: {CARD};
+    border-right: 1px solid {LINE};
 }}
+
+/* ---- Selectbox label ---- */
 .stSelectbox label, .stMultiSelect label {{
-color: {INK_SOFT} !important;
-font-size: 0.82rem !important;
-font-weight: 500 !important;
+    color: {INK_SOFT} !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
 }}
+
+/* ---- Subheader có gạch chân mảnh kiểu nhãn hồ sơ ---- */
 .section-label {{
-font-size: 0.78rem;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 0.06em;
-color: {INK_SOFT};
-border-bottom: 1px solid {LINE};
-padding-bottom: 0.4rem;
-margin-top: 0.4rem;
-margin-bottom: 0.9rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: {INK_SOFT};
+    border-bottom: 1px solid {LINE};
+    padding-bottom: 0.4rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.9rem;
 }}
+
+/* ---- Nút bấm ---- */
 .stButton button {{
-border-radius: 8px;
-border: 1px solid {LINE};
-font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid {LINE};
+    font-weight: 500;
 }}
-</style>"""
+</style>
+"""
 
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
@@ -189,7 +212,9 @@ def render_funnel_html(counts: dict, goal: int = 0) -> str:
         if i > 0:
             prev_val = stages[i - 1][2]
             pct = (val / prev_val * 100) if prev_val else 0
-            conv_html = f'<div class="funnel-conv">&#8595; {pct:.1f}%</div>'
+            conv_html = (
+                f'<div class="funnel-conv">↓ {pct:.1f}%</div>'
+            )
         goal_html = ""
         if is_last and goal:
             achieved = val >= goal
@@ -197,36 +222,92 @@ def render_funnel_html(counts: dict, goal: int = 0) -> str:
             bg = SAGE_BG if achieved else RUST_BG
             goal_html = (
                 f'<div class="funnel-goal" style="color:{color};background:{bg};">'
-                f"目標 {goal} 名 ・ {val/goal*100:.0f}%</div>"
+                f"目標 {goal} 名 ・ {val/goal*100:.0f}%"
+                f"</div>"
             )
-        row = (
-            conv_html
-            + '<div class="funnel-row"><div class="funnel-bar" style="width:'
-            + f"{width_pct:.1f}"
-            + '%;">'
-            + f'<span class="funnel-jp">{jp}</span>'
-            + f'<span class="funnel-vi">{vi}</span>'
-            + f'<span class="funnel-val">{val:,}</span>'
-            + "</div></div>"
-            + goal_html
+        rows_html.append(
+            f"""
+            {conv_html}
+            <div class="funnel-row">
+                <div class="funnel-bar" style="width:{width_pct:.1f}%;">
+                    <span class="funnel-jp">{jp}</span>
+                    <span class="funnel-vi">{vi}</span>
+                    <span class="funnel-val">{val:,}</span>
+                </div>
+            </div>
+            {goal_html}
+            """
         )
-        rows_html.append(row)
 
-    style = (
-        "<style>"
-        ".funnel-wrap{display:flex;flex-direction:column;align-items:center;padding:0.6rem 0 0.2rem 0;}"
-        ".funnel-row{width:100%;display:flex;justify-content:center;}"
-        f".funnel-bar{{background:linear-gradient(135deg,{NAVY} 0%,{NAVY_DEEP} 100%);border-radius:8px;padding:0.65rem 1.1rem;margin:0.18rem 0;display:flex;align-items:baseline;justify-content:space-between;gap:0.6rem;min-width:220px;box-shadow:0 1px 3px rgba(31,36,48,0.12);}}"
-        ".funnel-jp{font-family:'Inter',sans-serif;font-weight:600;font-size:0.95rem;color:#FFFFFF;white-space:nowrap;}"
-        ".funnel-vi{font-family:'Inter',sans-serif;font-weight:400;font-size:0.74rem;color:rgba(255,255,255,0.72);white-space:nowrap;}"
-        ".funnel-val{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:1.05rem;color:#FFFFFF;margin-left:auto;white-space:nowrap;}"
-        f".funnel-conv{{font-family:'JetBrains Mono',monospace;font-size:0.76rem;color:{INK_SOFT};text-align:center;padding:0.12rem 0;}}"
-        ".funnel-goal{font-family:'JetBrains Mono',monospace;font-size:0.74rem;font-weight:600;text-align:center;padding:0.22rem 0.7rem;border-radius:6px;margin-top:0.35rem;display:inline-block;}"
-        "</style>"
-    )
-
-    return style + '<div class="funnel-wrap">' + "".join(rows_html) + "</div>"
-
+    return f"""
+    <style>
+    .funnel-wrap {{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.6rem 0 0.2rem 0;
+    }}
+    .funnel-row {{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }}
+    .funnel-bar {{
+        background: linear-gradient(135deg, {NAVY} 0%, {NAVY_DEEP} 100%);
+        border-radius: 8px;
+        padding: 0.65rem 1.1rem;
+        margin: 0.18rem 0;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.6rem;
+        min-width: 220px;
+        box-shadow: 0 1px 3px rgba(31,36,48,0.12);
+    }}
+    .funnel-jp {{
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #FFFFFF;
+        white-space: nowrap;
+    }}
+    .funnel-vi {{
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 0.74rem;
+        color: rgba(255,255,255,0.72);
+        white-space: nowrap;
+    }}
+    .funnel-val {{
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 600;
+        font-size: 1.05rem;
+        color: #FFFFFF;
+        margin-left: auto;
+        white-space: nowrap;
+    }}
+    .funnel-conv {{
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.76rem;
+        color: {INK_SOFT};
+        text-align: center;
+        padding: 0.12rem 0;
+    }}
+    .funnel-goal {{
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.74rem;
+        font-weight: 600;
+        text-align: center;
+        padding: 0.22rem 0.7rem;
+        border-radius: 6px;
+        margin-top: 0.35rem;
+        display: inline-block;
+    }}
+    </style>
+    <div class="funnel-wrap">
+        {''.join(rows_html)}
+    </div>
+    """
 
 
 # ============================================================
